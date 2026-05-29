@@ -57,6 +57,44 @@ const proyectos = [
       { nombre: "Valentina Cruz", rol: "Diseño UI" },
       { nombre: "Rodrigo Pérez", rol: "QA" }
     ]
+  },
+  {
+   id: 4,
+   titulo: "Plataforma de Exámenes Online",
+   categoria: "Web",
+  estado: "En curso",
+   descripcion: [
+    "Sistema web que permite a los docentes crear y gestionar exámenes en línea con diferentes tipos de preguntas.",
+    "Los alumnos pueden rendir desde cualquier dispositivo y los resultados se corrigen automáticamente."
+   ],
+   recursos: [
+      { tipo: "PDF", url: "https://drive.google.com/documento4" },
+      { tipo: "GitHub", url: "https://github.com/ejemplo/examenes-online" },
+      { tipo: "Drive", url: "https://drive.google.com/carpeta4" }
+   ],
+   equipo: [
+      { nombre: "Lucas Medina", rol: "Frontend" },
+      { nombre: "Carla Soto", rol: "Backend" }
+   ]
+  },
+  {
+   id: 5,
+   titulo: "App de Seguimiento Académico",
+   categoria: "Mobile",
+   estado: "Finalizado",
+   descripcion: [
+    "Aplicación móvil para que los alumnos consulten sus notas, asistencias y calendario de materias.",
+    "Incluye notificaciones de fechas de exámenes y comunicación directa con los docentes."
+   ],
+  recursos: [
+      { tipo: "PDF", url: "https://drive.google.com/documento5" },
+      { tipo: "GitHub", url: "https://github.com/ejemplo/seguimiento-academico" },
+      { tipo: "Drive", url: "https://drive.google.com/carpeta5" }
+   ],
+   equipo:[
+      { nombre: "Tomás Quiroga", rol: "Mobile Dev" },
+      { nombre: "Valentina Ríos", rol: "Diseño UX" }
+   ]
   }
 ]
 
