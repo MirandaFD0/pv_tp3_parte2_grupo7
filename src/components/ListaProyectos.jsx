@@ -26,8 +26,9 @@ const ListaProyectos = () => {
   }
 
   const handleBuscar = (e) => {
-    setBusqueda(e.target.value)
-    setProyectos(proyectoService.buscarProyecto(e.target.value))
+    const { value } = e.target
+    setBusqueda(value)
+    setProyectos(proyectoService.buscarProyecto(value))
   }
 
   const handleChange = (e) => {
@@ -35,13 +36,34 @@ const ListaProyectos = () => {
     setNuevoProyecto({ ...nuevoProyecto, [name]: value })
   }
 
+  const handleDescripcion = (index, value) => {
+    const nuevaDesc = [...nuevoProyecto.descripcion]
+    nuevaDesc[index] = value
+    setNuevoProyecto({ ...nuevoProyecto, descripcion: nuevaDesc })
+  }
+
+  const handleRecurso = (index, value) => {
+    const nuevosRecursos = [...nuevoProyecto.recursos]
+    nuevosRecursos[index] = { ...nuevosRecursos[index], url: value }
+    setNuevoProyecto({ ...nuevoProyecto, recursos: nuevosRecursos })
+  }
+
+  const handleEquipo = (index, field, value) => {
+    const nuevoEquipo = [...nuevoProyecto.equipo]
+    nuevoEquipo[index] = { ...nuevoEquipo[index], [field]: value }
+    setNuevoProyecto({ ...nuevoProyecto, equipo: nuevoEquipo })
+  }
+
+  const agregarMiembro = () => {
+    setNuevoProyecto({
+      ...nuevoProyecto,
+      equipo: [...nuevoProyecto.equipo, { nombre: '', rol: '' }]
+    })
+  }
+
   const handleAgregar = () => {
     if (nuevoProyecto.titulo.trim() === '') return
-    const nuevo = {
-      ...nuevoProyecto,
-      id: Date.now()
-    }
-    proyectoService.agregarProyecto(nuevo)
+    proyectoService.agregarProyecto({ ...nuevoProyecto, id: Date.now() })
     setProyectos(proyectoService.obtenerProyectos())
     setNuevoProyecto({
       titulo: '',
@@ -82,6 +104,7 @@ const ListaProyectos = () => {
 
       <section>
         <h3>Agregar Proyecto</h3>
+
         <input
           type="text"
           name="titulo"
@@ -104,7 +127,53 @@ const ListaProyectos = () => {
           <option value="En curso">En curso</option>
           <option value="Finalizado">Finalizado</option>
         </select>
-        <button onClick={handleAgregar}>Agregar</button>
+
+        <p><strong>Descripción</strong></p>
+        <input
+          type="text"
+          placeholder="Párrafo 1"
+          value={nuevoProyecto.descripcion[0]}
+          onChange={(e) => handleDescripcion(0, e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Párrafo 2"
+          value={nuevoProyecto.descripcion[1]}
+          onChange={(e) => handleDescripcion(1, e.target.value)}
+        />
+
+        <p><strong>Recursos</strong></p>
+        {nuevoProyecto.recursos.map((recurso, index) => (
+          <input
+            key={index}
+            type="text"
+            placeholder={`URL ${recurso.tipo}`}
+            value={recurso.url}
+            onChange={(e) => handleRecurso(index, e.target.value)}
+          />
+        ))}
+
+        <p><strong>Equipo</strong></p>
+        {nuevoProyecto.equipo.map((miembro, index) => (
+          <div key={index}>
+            <input
+              type="text"
+              placeholder="Nombre"
+              value={miembro.nombre}
+              onChange={(e) => handleEquipo(index, 'nombre', e.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="Rol"
+              value={miembro.rol}
+              onChange={(e) => handleEquipo(index, 'rol', e.target.value)}
+            />
+          </div>
+        ))}
+        <button onClick={agregarMiembro}>+ Agregar miembro</button>
+
+        <br />
+        <button onClick={handleAgregar}>Agregar Proyecto</button>
       </section>
 
       <h3>Proyectos</h3>
