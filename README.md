@@ -1,16 +1,60 @@
-# React + Vite
+# TP3 - Parte 2: Gestión de Proyectos Educativos - React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Proyecto desarrollado para la materia **Programación Visual** utilizando **React** y **Vite**.
 
-Currently, two official plugins are available:
+Este trabajo se enfoca en la comunicación entre componentes mediante el pasaje de información (**props**) y la simplificación del código utilizando **desestructuración de objetos**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Integrantes del Grupo
 
-## React Compiler
+- Leandro Camacho - Github: [@leandrocamacho03]
+- Facundo Miranda - Github: [@MirandaFD0]
+- Porco Lucas - Github: [@lucas777porco-ai]
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tecnologías Utilizadas
 
-## Expanding the ESLint configuration
+- **React**
+- **Vite**
+- **CSS**
+- **JavaScript**
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Funcionalidades Implementadas
+
+### Componente ProyectoCard
+- Representación de una tarjeta de proyecto individual.
+- Recepción de un objeto proyecto completo mediante **props**.
+- Uso de **desestructuración** de propiedades:
+  - título
+  - categoría
+  - estado
+  - id
+- Visualización del título, estado y categoría.
+- Botones para eliminar o ver detalle.
+
+### Componente DetalleProyecto
+- Recepción de un objeto de proyecto seleccionado mediante **props**.
+- Muestra descripción extendida del proyecto.
+- Visualización de recursos utilizados.
+- Visualización del equipo con nombres y roles.
+
+### Refactorización de ListaProyectos
+- Uso del componente `<ProyectoCard />` dentro de `.map()`.
+- Pasaje del objeto correspondiente mediante **prop**.
+- Aplicación de desestructuración en el manejo de estados del formulario.
+
+## Objetivo del Proyecto
+
+Aplicar el uso de **props**, **componentes reutilizables** y **desestructuración de objetos** en React para mejorar la organización del código.
+
+## Ejecución del Proyecto
+
+Instalar dependencias:
+
+```bash
+npm install
+```
+
+Ejecutar el proyecto:
+
+```bash
+npm run dev
+```
